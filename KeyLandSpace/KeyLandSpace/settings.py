@@ -55,7 +55,10 @@ ROOT_URLCONF = 'KeyLandSpace.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            'KeyLandSpace/templates',
+            'products/templates',
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
