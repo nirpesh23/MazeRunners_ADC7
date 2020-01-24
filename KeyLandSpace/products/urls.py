@@ -7,4 +7,5 @@ urlpatterns = [
     path('productlist/',view_product_details),
     path('productform/',view_product_form),
     path('productform/save',view_productlist_save),
+    path('productsearch/',view_search_item),
 ]

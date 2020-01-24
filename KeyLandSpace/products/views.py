@@ -34,3 +34,13 @@ def view_productlist_save(request):
         return HttpResponse("Record Saved")
     else:
         return HttpResponse("Error record saving")
+
+
+
+def view_search_item(request):
+    search_item = request.GET['Query']
+    list_of_product = Product.objects.filter(text__icontains=search_item)
+    context = {
+           'productsearch':list_of_product
+    }
+    return render(request,'products/productsearch.html',context)
