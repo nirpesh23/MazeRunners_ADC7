@@ -8,8 +8,8 @@ from .views import *
 
 
 class PermissionTest(TestCase):
-	def Userpermission(self):
-		user1=User.objects.filter(is_superuser=0)
+  def Userpermission(self):
+        user1=User.objects.filter(is_superuser=0)
         p2=Permission.objects.get(id=28)
         t1=test.objects.create(user=user1,permission=p2)
         self.assertTrue(t1.is_valid_flight())
