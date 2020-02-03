@@ -8,5 +8,6 @@ urlpatterns = [
      path('productlist/',view_product_details),
      path('homepage/', view_homepage),
      path('signup/',view_register_user),	
+     path('keylandspace/', view_keylandspace),	
 	 
 ]

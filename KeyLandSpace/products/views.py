@@ -14,6 +14,9 @@ from django.contrib.auth.decorators import login_required
 def view_homepage(request):
 	return render(request,'homepage.html')
 
+def view_keylandspace(request):
+	return render(request,'keylandspace.html')
+
 def view_product_details(request):
     list_of_product= Product.objects.all()
     print(list_of_product)
