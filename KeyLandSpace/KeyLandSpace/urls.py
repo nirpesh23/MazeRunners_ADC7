@@ -25,6 +25,9 @@ urlpatterns = [
 urlpatterns += [
     path('products/',include('products.urls'))
 ]
+urlpatterns += [
+    path('restapi/',include('restapi.urls'))
+]
 
 urlpatterns += [
     # path('accounts/',include('django.contrib.auth.urls')),
