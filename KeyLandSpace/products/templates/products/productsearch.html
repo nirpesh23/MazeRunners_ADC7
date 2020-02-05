@@ -7,11 +7,35 @@
     <title>Search </title>
 </head>
 <body>
-    <form method="GET" action="search">
-        <input type='text' name="Query" placeholder="Search">
-        <input type="submit" value="Search">
-
-
+    <form method="POST" action="">
+        {% csrf_token %}
+        <input type="text" placeholder="Search.." name="sea">
+        <button type="submit"><i class="fa fa-search"></i>Search</button>
     </form>
+    </div>
+    
+        {% if sr %}
+        {% for rows in sr %}
+        <table >
+            <tr>
+                <td>Name</td>
+                <td>{{rows.Name}}</td>
+                </tr>
+                <tr>
+                    <td>Category</td>
+                    <td>{{rows.Category}}</td>
+                </tr>
+                <tr>
+                    <td>Condition</td>
+                    <td>{{rows.Condition}}</td>
+                </tr>
+                <tr>
+                    <td>Price</td>
+                    <td>{{rows.Price}}</td>
+                </tr>
+                </table>
+        {% endfor %}
+        {% endif %}
+    
 </body>
 </html>

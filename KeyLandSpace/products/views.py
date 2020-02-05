@@ -37,10 +37,18 @@ def view_productlist_save(request):
 
 
 
-def view_search_item(request):
-    search_item = request.GET['Query']
-    list_of_product = Product.objects.filter(text__icontains=search_item)
-    context = {
-           'productsearch':list_of_product
-    }
-    return render(request,'products/productsearch.html',context)
+def search(request):
+    if request.method=="POST":
+        srh= request.POST['sea']
+    
+        if srh:
+            match = Product.objects.filter(Name__icontains=srh)
+
+            if match:
+                return render(request,'products/productsearch.html', {"sr":match})
+            else:
+                return HttpResponse('Not successful')
+        else:
+            return('Not success')
+    else:
+        return render(request, 'products/productsearch.html')
