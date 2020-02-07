@@ -42,8 +42,28 @@ def view_getByID_updateByID_deleteByID(request,ID):
             "Cataeory":Product2.Category,
 
         })
-    else:
+
+    elif request.method=="PUT":
+        product=Product.objects.get(id=ID)
+        python_dict_object = json.loads(request.body)
+        product.Name=python_dict_object['Name']
+        product.Category=python_dict_object['Category']
+        product.save()
         return JsonResponse({
-        "message":" Other htpp verbs Testing"
+        "message":" update your put data successfully!!!"
+        })
+    
+    elif request.method=="DELETE":
+        product=Product2.objects.get(id=ID)
+        product.delete()
+        return JsonResponse({
+        "message":" delete id successfully!!!!!!!!!1"
         })
 
+        
+
+
+
+
+
+    
