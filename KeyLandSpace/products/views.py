@@ -64,3 +64,5 @@ def view_authenticate_user(request):
             return HttpResponse("Authentication Failed")  
 
     
+def view_hello_world(request):
+    pass
