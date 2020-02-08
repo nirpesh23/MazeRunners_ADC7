@@ -7,7 +7,6 @@ urlpatterns = [
      path('productlist/edit/update/<int:ID>',view_update_form_data_in_db),
      path('productlist/',view_product_details),
      path('homepage/', view_homepage),
-     path('signup/',view_register_user),	
-     path('keylandspace/', view_keylandspace),	
+     path('signup/',view_register_user),		
 	 
 ]
