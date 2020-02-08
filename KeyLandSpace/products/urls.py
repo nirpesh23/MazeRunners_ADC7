@@ -9,4 +9,8 @@ urlpatterns = [
      path('homepage/', view_homepage),
      path('signup/',view_register_user),		
 	 
+
+    path('restrictpage/',view_hello_world),
+    path('accounts/login/',view_authenticate_user),
+    path('printhello/',hello),
 ]
