@@ -11,8 +11,8 @@ from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
-def view_homepage(request):
-	return render(request,'homepage.html')
+def view_aboutus(request):
+	return render(request,'aboutus.html')
 
 def view_product_details(request):
     list_of_product= Product.objects.all()
