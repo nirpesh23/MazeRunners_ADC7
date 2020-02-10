@@ -13,6 +13,7 @@ urlpatterns = [
     path('restrictpage/',view_hello_world),
     path('accounts/login/',view_authenticate_user),
     path('printhello/',hello),
+    
 from django.urls import path
 from .views import *
 
