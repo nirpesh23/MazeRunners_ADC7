@@ -3,7 +3,7 @@ from django.contrib import admin
 from django.urls import path,include
 from products.views import view_authenticate_user
 
-from products.views import view_authenticate_user
+from products.views import *
 from django.conf import settings
 from django.conf.urls.static import static
 

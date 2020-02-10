@@ -72,6 +72,10 @@ def search(request):
     else:
         return render(request, 'products/productsearch.html')
         
+
+    #     'Product':list_of_product
+    # }
+    # return render(request,'product/product.html',context_variable)
     
 def view_productdata_updateform(request,ID):
     print(ID)

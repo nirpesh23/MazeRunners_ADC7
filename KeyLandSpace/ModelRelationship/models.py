@@ -36,6 +36,11 @@ class Customer(models.Model):
     
     def count_buyer (self):
         return self.buyer.all().count()
+    def customer_name_blank_check(self):
+        if self.First_Name =="":
+            return False 
+        else:
+            return True 
 
     def count_seller(self):
         return self.seller.all().count()
@@ -49,9 +54,14 @@ class Product(models.Model):
     def __str__(self):
         return f"{self.Name} falls on {self.Category} it is {self.Condition} costing {self.Price}"
 
-
+    def brand_new_product_count(self):
+        product_brandnew_count=Product.objects.filter(Condition_is="brand new").count()
+        return product_brandnew_count
     
-
+    def used_product_count_check(self):
+        used_product_count=Product.objects.filter(Condition_is="used").count()
+        return used_product_count
+    
 
 class Order_items(models.Model):
     products = models.ForeignKey(Product,on_delete=models.CASCADE)
