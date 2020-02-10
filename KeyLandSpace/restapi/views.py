@@ -1,4 +1,6 @@
 from django.shortcuts import render
+
+# Create your views here.
 from django.http import HttpResponse,JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from products.models import Product
@@ -8,14 +10,14 @@ import json
 def view_get_post_products(request):
     print("What's the request => ",request.method)
     if request.method == "GET":
-       Product1 =Product.objects.all()
-       print("QuerySet objects => ",Product1)
-       list_of_Products = list(Product1.values("Name","Category"))
-       print("List of products objects => ",list_of_Products)
-       dictionary_name = {
-        "Product1":list_of_Products
+        products = Product.objects.all()
+        print("QuerySet objects => ",products)
+        list_of_products = list(products.values("Name","Category","Condition","Price"))
+        print("List of product objects => ",list_of_products)
+        dictionary_name = {
+        "products":list_of_products
     }
-       return JsonResponse(dictionary_name)
+        return JsonResponse(dictionary_name)
     elif request.method == "POST":
         print("Request body content =>", request.body)
         print("Request body type =>", type(request.body))
@@ -24,46 +26,46 @@ def view_get_post_products(request):
         print("Python dictionary type=>",type(python_dictionary_object))
         print(python_dictionary_object['Name'])
         print(python_dictionary_object['Category'])
-        Product.objects.create(Name=python_dictionary_object['Name'],Category=python_dictionary_object['Category'])
+        print(python_dictionary_object['Condition'])
+        print(python_dictionary_object['Price'])
+        Product.objects.create(Name=python_dictionary_object['Name'],Category=python_dictionary_object['Category'],Condition=python_dictionary_object['Condition'],Price=python_dictionary_object['Price'])
         return JsonResponse({
             "message":"Successfully posted!!"
         })
     else:
-        return HttpResponse("Other HTTP verbs testing")
+        return HttpResponse("No List Working!!!!!")
 
 @csrf_exempt
 def view_getByID_updateByID_deleteByID(request,ID):
     print("What's the request =>",request.method)
     if request.method == "GET":
-        Product2 = Product.objects.get(id = ID)
+        products = Product.objects.get(id = ID)
+        print(type(products.Name))
         return JsonResponse({
-            "id":Product2.id,
-            "Name":Product2.Name,
-            "Cataeory":Product2.Category,
+            "id":products.id,
+            "Name":products.Name,
+            "Category":products.Category,
+            "Condition":products.Condition,
+            "Price":products.Price,
 
+        
         })
 
     elif request.method=="PUT":
-        product=Product.objects.get(id=ID)
+        guide=Product.objects.get(id=ID)
         python_dict_object = json.loads(request.body)
-        product.Name=python_dict_object['Name']
-        product.Category=python_dict_object['Category']
-        product.save()
+        guide.Name=python_dict_object['Name']
+        guide.Category=python_dict_object['Category']
+        guide.Condition=python_dict_object['Condition']
+        guide.Price=python_dict_object['Price']
+        guide.save()
         return JsonResponse({
         "message":" update your put data successfully!!!"
         })
     
     elif request.method=="DELETE":
-        product=Product2.objects.get(id=ID)
-        product.delete()
+        guide=Product.objects.get(id=ID)
+        guide.delete()
         return JsonResponse({
         "message":" delete id successfully!!!!!!!!!1"
         })
-
-        
-
-
-
-
-
-    

@@ -4,6 +4,6 @@ from .views import view_getByID_updateByID_deleteByID
 
 
 urlpatterns = [
-    path('Product1/',view_get_post_products),
-    path('Product2/<int:ID>',view_getByID_updateByID_deleteByID),
+    path('products/',view_get_post_products),
+    path('products/<int:ID>',view_getByID_updateByID_deleteByID),
 ]
