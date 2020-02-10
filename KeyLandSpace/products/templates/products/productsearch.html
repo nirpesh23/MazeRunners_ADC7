@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Search </title>
+</head>
+<body>
+    <form method="POST" action="">
+        {% csrf_token %}
+        <input type="text" placeholder="Search.." name="sea">
+        <button type="submit"><i class="fa fa-search"></i>Search</button>
+    </form>
+    </div>
+    
+        {% if sr %}
+        {% for rows in sr %}
+        <table >
+            <tr>
+                <td>Name</td>
+                <td>{{rows.Name}}</td>
+                </tr>
+                <tr>
+                    <td>Category</td>
+                    <td>{{rows.Category}}</td>
+                </tr>
+                <tr>
+                    <td>Condition</td>
+                    <td>{{rows.Condition}}</td>
+                </tr>
+                <tr>
+                    <td>Price</td>
+                    <td>{{rows.Price}}</td>
+                </tr>
+                </table>
+        {% endfor %}
+        {% endif %}
+    
+</body>
+</html>

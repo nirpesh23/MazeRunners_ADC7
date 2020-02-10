@@ -33,3 +33,7 @@ urlpatterns += [
     # path('accounts/',include('django.contrib.auth.urls')),
     path('accounts/login/',view_authenticate_user)
 ]
+urlpatterns += [
+    path('products/',include('products.urls')),
+    path('restapi/',include ('restapi.urls'))
+]
