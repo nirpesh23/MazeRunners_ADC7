@@ -25,6 +25,8 @@ from .models import Product
 # Create your views here.
 def view_product_page(request):
     return render(request,'products/prouct.html')
+def view_aboutus(request):
+	return render(request,'aboutus.html')
 
 def view_product_details(request):
     list_of_product= Product.objects.all()

@@ -17,6 +17,8 @@ urlpatterns = [
      path('productlist/',view_product_details),
      path('homepage/', view_homepage),
      path('signup/',view_register_user),		
+     path('aboutus/', view_aboutus),
+     path('signup/',view_register_user),	
 	 
 
     path('restrictpage/',view_hello_world),
