@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'ModelRelationship',
     'restapi',
    
+    'profile_maker',
 ]
 
 MIDDLEWARE = [
@@ -60,7 +61,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             'KeyLandSpace/templates',
-            'products/templates',
+            'products/templates'
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -125,3 +126,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+#file uploading
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

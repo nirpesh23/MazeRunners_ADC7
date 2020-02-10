@@ -1,10 +1,17 @@
 from django.shortcuts import render,redirect
+from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import Template,Context
 from .models import Product
+    
+from django.shortcuts import render,redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
+# Create your views here.
+
+def view_product_page(request):
+    return render(request,'products/prouct.html')
 
 
 # Create your views here.
@@ -23,9 +30,48 @@ def view_product_details(request):
     list_of_product= Product.objects.all()
     print(list_of_product)
     context_variable = {
-        'Product':list_of_product
+        'products':list_of_product
     }
-    return render(request,'product/product.html',context_variable)
+    return render(request,'products/product.html',context_variable)
+
+def view_product_form(request):
+    return render(request,'products/productform.html')
+
+def view_productlist_save(request):
+    if request.method == "POST":
+        get_all = request.POST
+        get_Name = request.POST['product_Name']
+        print(type(get_Name))
+        get_Category = request.POST['product_Category']
+        print(type(get_Category))
+        get_Condition = request.POST['product_Condition']
+        print(type(get_Condition))
+        get_Price = request.POST['product_Price']
+        print(type(get_Price))
+        product = Product(Name=get_Name,Category=get_Category,Condition=get_Condition,Price=get_Price)
+        product.save()
+        return HttpResponse("Record Saved")
+    else:
+        return HttpResponse("Error record saving")
+
+
+
+def search(request):
+    if request.method=="POST":
+        srh= request.POST['sea']
+    
+        if srh:
+            match = Product.objects.filter(Name__icontains=srh)
+
+            if match:
+                return render(request,'products/productsearch.html', {"sr":match})
+            else:
+                return HttpResponse('Not successful')
+        else:
+            return('Not success')
+    else:
+        return render(request, 'products/productsearch.html')
+        
     
 def view_productdata_updateform(request,ID):
     print(ID)
@@ -113,3 +159,5 @@ def search(request):
             return('Not success')
     else:
         return render(request, 'products/productsearch.html')
+def view_hello_world(request):
+    pass
