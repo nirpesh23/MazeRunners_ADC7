@@ -9,8 +9,7 @@ class Buyer(models.Model):
     def __str__(self):
         return f"{self.Name} {self.Email}"
     
-    
-
+   
 class Seller(models.Model):
     Name = models.CharField(max_length=50)
     Email = models.EmailField()
@@ -20,7 +19,7 @@ class Seller(models.Model):
     def __str__(self):
         return f"{self.Name} {self.Email}"
 
-    
+   
 
 class Customer(models.Model):
     First_Name = models.CharField(max_length=50)
@@ -35,7 +34,10 @@ class Customer(models.Model):
 
     
     
+    
 
+    def count_seller(self):
+        return self.seller.all().count()
 
 class Product(models.Model):
     Name = models.CharField(max_length=50)
@@ -45,6 +47,9 @@ class Product(models.Model):
    
     def __str__(self):
         return f"{self.Name} falls on {self.Category} it is {self.Condition} costing {self.Price}"
+
+
+    
 
 
 class Order_items(models.Model):
@@ -57,11 +62,12 @@ class Order_items(models.Model):
 
 
 class Order(models.Model):
-    customer = models.ManyToManyField(User,blank=True)
+    customer = models.ManyToManyField(Customer)
     product = models.ManyToManyField(Order_items)
     ordered_date = models.DateTimeField()
     
     def __str__(self):
         return f" {list(self.customer.all())} ordered {list(self.product.all())} in{self.ordered_date}"
+        
         
     
