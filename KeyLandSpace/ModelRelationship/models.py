@@ -34,7 +34,8 @@ class Customer(models.Model):
 
     
     
-    
+    def count_buyer (self):
+        return self.buyer.all().count()
 
     def count_seller(self):
         return self.seller.all().count()
@@ -68,6 +69,10 @@ class Order(models.Model):
     
     def __str__(self):
         return f" {list(self.customer.all())} ordered {list(self.product.all())} in{self.ordered_date}"
-        
-        
+
     
+    
+
+
+        
+        
