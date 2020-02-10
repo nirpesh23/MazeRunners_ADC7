@@ -38,9 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'products',
-    'ModelRelationship'
+    'ModelRelationship',
     'restapi',
-    'profile_maker'
+    'profile_maker',
 ]
 
 MIDDLEWARE = [
