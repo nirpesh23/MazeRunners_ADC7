@@ -11,7 +11,7 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def view_product_page(request):
-    return render(request,'products/prouct.html')
+    return render(request,'product/product.html')
 
 
 # Create your views here.
@@ -24,7 +24,8 @@ from .models import Product
 
 # Create your views here.
 def view_product_page(request):
-    return render(request,'products/prouct.html')
+    return render(request,'products/product.html')
+
 def view_aboutus(request):
 	return render(request,'aboutus.html')
 
@@ -34,7 +35,7 @@ def view_product_details(request):
     context_variable = {
         'products':list_of_product
     }
-    return render(request,'products/product.html',context_variable)
+    return render(request,'product/product.html',context_variable)
 
 def view_product_form(request):
     return render(request,'products/productform.html')
@@ -124,9 +125,6 @@ def view_authenticate_user(request):
             return HttpResponse("Authentication Failed")  
 
     
-        'products':list_of_product
-    }
-    return render(request,'products/product.html',context_variable)
 
 def view_product_form(request):
     return render(request,'products/productform.html')
